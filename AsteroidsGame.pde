@@ -1,8 +1,8 @@
-Spaceship bob = new Spaceship(); // Create a new spaceship
+Spaceship bob = new Spaceship(); 
 Star[] sue;
 
 public void setup() {
-    size(500, 500); // Set up the screen size
+    size(500, 500); 
     sue = new Star[1000];
     for(int i = 0;i<sue.length;i++){
       sue[i]=new Star();
@@ -10,24 +10,24 @@ public void setup() {
 }
 
 public void draw() {
-    background(0); // Black background
-    bob.move();    // Update the spaceship's position
-    bob.show();    // Display the spaceship
+    background(0); 
+    bob.move();    
+    bob.show();   
     for(int i = 0;i<sue.length;i++)
     sue[i].show();
 }
 
 public void keyPressed() {
     if (key == 'w' || key == 'W') {
-        bob.accelerate(0.4); // Accelerate forward
+        bob.accelerate(0.4);
     } else if (key == 's' || key == 'S') {
-        bob.accelerate(-0.4); // Decelerate (reverse thrust)
+        bob.accelerate(-0.4); 
     } else if (key == 'a' || key == 'A') {
-        bob.turn(-5); // Turn left
+        bob.turn(-5);
     } else if (key == 'd' || key == 'D') {
-        bob.turn(5); // Turn right
+        bob.turn(5);
     } else if (key == ' ') {
-        bob.hyperspace(); // Activate hyperspace when spacebar is pressed
+        bob.hyperspace(); 
     }
 
 }
