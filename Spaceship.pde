@@ -21,14 +21,4 @@ class Spaceship extends Floater {
         myYspeed = 0;
         myPointDirection = random(360); // Point in a random direction (0 to 360 degrees)
     }
-    
-    // Getter for spaceship's X center position
-    public double getCenterX() {
-        return myCenterX;
-    }
-
-    // Getter for spaceship's Y center position
-    public double getCenterY() {
-        return myCenterY;
-    }
 }
