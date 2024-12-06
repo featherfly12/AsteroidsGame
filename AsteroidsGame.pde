@@ -1,37 +1,45 @@
-Spaceship bob = new Spaceship(); // Create a new spaceship
+Spaceship bob;                   // Create a new spaceship
 Star[] sue;                      // Array for stars
 ArrayList<Asteroid> asteroids;   // ArrayList for asteroids
 
-public void setup() {
+void setup() {
     size(500, 500); // Set up the screen size
+    bob = new Spaceship(); // Initialize the spaceship
+
+    // Initialize stars
     sue = new Star[1000];
     for (int i = 0; i < sue.length; i++) {
-        sue[i] = new Star(); // Initialize stars
+        sue[i] = new Star();
     }
-    
-    asteroids = new ArrayList<Asteroid>(); // Initialize the asteroid ArrayList
-    for (int i = 0; i < 10; i++) { // Add 5 asteroids to start
+
+    // Initialize asteroids
+    asteroids = new ArrayList<Asteroid>();
+    for (int i = 0; i < 10; i++) {
         asteroids.add(new Asteroid());
     }
 }
 
-public void draw() {
+void draw() {
     background(0); // Black background
-    bob.move();    // Update the spaceship's position
-    bob.show();    // Display the spaceship
-    
+
+    // Update and display spaceship
+    bob.move();
+    bob.show();
+
+    // Display stars
     for (int i = 0; i < sue.length; i++) {
-        sue[i].show(); // Display stars
+        sue[i].show();
     }
-    
-    // Update and display each asteroid in the ArrayList
+
+    // Update and display asteroids
     for (Asteroid asteroid : asteroids) {
         asteroid.move();
         asteroid.show();
     }
 }
 
-public void keyPressed() {
+void keyPressed() {
+    // Spaceship controls
     if (key == 'w' || key == 'W') {
         bob.accelerate(0.4); // Accelerate forward
     } else if (key == 's' || key == 'S') {
@@ -44,3 +52,4 @@ public void keyPressed() {
         bob.hyperspace(); // Activate hyperspace when spacebar is pressed
     }
 }
+
