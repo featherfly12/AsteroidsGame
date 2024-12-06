@@ -2,7 +2,7 @@ class Asteroid extends Floater {
     private double rotationSpeed; 
 
     Asteroid() {
-        corners = 6; // Asteroids are hexagonal
+        corners = 6; 
         xCorners = new int[corners];
         yCorners = new int[corners];
 
