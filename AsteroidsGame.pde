@@ -52,4 +52,3 @@ void keyPressed() {
         bob.hyperspace(); // Activate hyperspace when spacebar is pressed
     }
 }
-
