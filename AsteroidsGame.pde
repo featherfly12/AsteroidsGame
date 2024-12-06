@@ -1,11 +1,17 @@
 Spaceship bob = new Spaceship(); // Create a new spaceship
-Star[] sue;
+Star[] sue;                      // Array for stars
+ArrayList<Asteroid> asteroids;   // ArrayList for asteroids
 
 public void setup() {
     size(500, 500); // Set up the screen size
     sue = new Star[1000];
-    for(int i = 0;i<sue.length;i++){
-      sue[i]=new Star();
+    for (int i = 0; i < sue.length; i++) {
+        sue[i] = new Star(); // Initialize stars
+    }
+    
+    asteroids = new ArrayList<Asteroid>(); // Initialize the asteroid ArrayList
+    for (int i = 0; i < 10; i++) { // Add 5 asteroids to start
+        asteroids.add(new Asteroid());
     }
 }
 
@@ -13,8 +19,16 @@ public void draw() {
     background(0); // Black background
     bob.move();    // Update the spaceship's position
     bob.show();    // Display the spaceship
-    for(int i = 0;i<sue.length;i++)
-    sue[i].show();
+    
+    for (int i = 0; i < sue.length; i++) {
+        sue[i].show(); // Display stars
+    }
+    
+    // Update and display each asteroid in the ArrayList
+    for (Asteroid asteroid : asteroids) {
+        asteroid.move();
+        asteroid.show();
+    }
 }
 
 public void keyPressed() {
@@ -29,5 +43,4 @@ public void keyPressed() {
     } else if (key == ' ') {
         bob.hyperspace(); // Activate hyperspace when spacebar is pressed
     }
-
 }
