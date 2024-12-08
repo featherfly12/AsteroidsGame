@@ -15,10 +15,10 @@ class Spaceship extends Floater {
 
     // Hyperspace method
     public void hyperspace() {
-        myCenterX = random(width); // Teleport to a random X position
-        myCenterY = random(height); // Teleport to a random Y position
+        myCenterX = Math.random()*(width); // Teleport to a random X position
+        myCenterY = Math.random()*(height); // Teleport to a random Y position
         myXspeed = 0; // Reset speed to 0
         myYspeed = 0;
-        myPointDirection = random(360); // Point in a random direction (0 to 360 degrees)
+        myPointDirection = Math.random()*(360); // Point in a random direction (0 to 360 degrees)
     }
 }
