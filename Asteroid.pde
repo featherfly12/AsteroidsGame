@@ -1,87 +1,38 @@
-Spaceship bob;                 // The spaceship
-Star[] sue;                    // Array for stars
-ArrayList<Asteroid> asteroids; // List of asteroids
-ArrayList<Bullet> bullets;     // List of bullets
+class Asteroid extends Floater {
+    private double rotationSpeed;
 
-void setup() {
-    size(500, 500); // Screen size
-    bob = new Spaceship(); // Create a new spaceship
+    Asteroid() {
+        corners = 6;
+        xCorners = new int[] {-15, -10, 0, 10, 15, 0};
+        yCorners = new int[] {0, -15, -10, -15, 0, 15};
+        myColor = color(150); // Gray
+        
+        // Generate random initial position
+        myCenterX = Math.random() * width; 
+        myCenterY = Math.random() * height;
 
-    // Create stars
-    sue = new Star[1000];
-    for (int i = 0; i < sue.length; i++) {
-        sue[i] = new Star();
+        // Generate random speed between -2 and 2
+        myXspeed = (Math.random() * 4) - 2; 
+        myYspeed = (Math.random() * 4) - 2;
+
+        // Generate random direction (0 to 360 degrees)
+        myPointDirection = Math.random() * 360; 
+
+        // Generate random rotation speed between -2 and 2
+        rotationSpeed = (Math.random() * 4) - 2; 
     }
 
-    // Create asteroids
-    asteroids = new ArrayList<Asteroid>();
-    for (int i = 0; i < 10; i++) {
-        asteroids.add(new Asteroid());
+    @Override
+    public void move() {
+        super.move();
+        myPointDirection += rotationSpeed;
     }
 
-    // Initialize bullets list
-    bullets = new ArrayList<Bullet>();
-}
-
-void draw() {
-    background(0); // Black background
-
-    // Move and display the spaceship
-    bob.move();
-    bob.show();
-
-    // Display stars
-    for (Star s : sue) {
-        s.show();
+    public double getCenterX() {
+        return myCenterX;
     }
 
-    // Move and display asteroids, check collisions
-    for (int i = asteroids.size() - 1; i >= 0; i--) { // Iterate backward for safe removal
-        Asteroid asteroid = asteroids.get(i);
-        float distance = dist((float) bob.myCenterX, (float) bob.myCenterY, 
-                              (float) asteroid.getCenterX(), (float) asteroid.getCenterY());
-
-        if (distance < 20) { // Collision threshold
-            asteroids.remove(i); // Remove asteroid on collision
-        } else {
-            asteroid.move();
-            asteroid.show();
-        }
-    }
-
-    // Move and display bullets
-    for (int i = bullets.size() - 1; i >= 0; i--) {
-        Bullet bullet = bullets.get(i);
-        bullet.move();
-        bullet.show();
-
-        // Check if the bullet hits any asteroid
-        for (int j = asteroids.size() - 1; j >= 0; j--) {
-            Asteroid asteroid = asteroids.get(j);
-            float distance = dist((float) bullet.myCenterX, (float) bullet.myCenterY,
-                                  (float) asteroid.getCenterX(), (float) asteroid.getCenterY());
-
-            if (distance < 15) { // Collision threshold for bullet
-                asteroids.remove(j); // Remove asteroid on collision
-                bullets.remove(i); // Bullet disappears after impact
-                break;
-            }
-        }
-    }
-}
-
-void keyPressed() {
-    if (key == 'w' || key == 'W') {
-        bob.accelerate(0.4);
-    } else if (key == 's' || key == 'S') {
-        bob.accelerate(-0.4);
-    } else if (key == 'a' || key == 'A') {
-        bob.turn(-5);
-    } else if (key == 'd' || key == 'D') {
-        bob.turn(5);
-    } else if (key == ' ') {
-        bob.hyperspace();
-    } else if (key == 'f' || key == 'F') { // Fire bullet on 'f' key press
-        bullets.add(new Bullet(bob));
+    public double getCenterY() {
+        return myCenterY;
     }
 }
