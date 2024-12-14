@@ -1,4 +1,3 @@
-// Spaceship class extending Floater
 class Spaceship extends Floater {
     // Constructor to initialize the spaceship
     Spaceship() {
@@ -15,10 +14,10 @@ class Spaceship extends Floater {
 
     // Hyperspace method
     public void hyperspace() {
-        myCenterX = Math.random()*(width); // Teleport to a random X position
-        myCenterY = Math.random()*(height); // Teleport to a random Y position
+        myCenterX = Math.random() * width; // Teleport to a random X position
+        myCenterY = Math.random() * height; // Teleport to a random Y position
         myXspeed = 0; // Reset speed to 0
         myYspeed = 0;
-        myPointDirection = Math.random()*(360); // Point in a random direction (0 to 360 degrees)
+        myPointDirection = Math.random() * 360; // Point in a random direction (0 to 360 degrees)
     }
 }
